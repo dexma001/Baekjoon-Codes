@@ -19,4 +19,4 @@ for i in range(m, 0, -1):
                     li[p][q] = ' '
 
 for i in range(len(li)):
-    print(''.join(li[i]))
+    print(''.join(li[i])) #' '.join(li[i])가 더 맛도리임
