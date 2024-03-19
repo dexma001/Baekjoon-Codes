@@ -1,4 +1,4 @@
-# 1725
+# 1725 - 히스토그램
 
 import sys
 input = sys.stdin.readline
@@ -8,17 +8,18 @@ li = list(int(input()) for _ in range(n))
 
 stack = []
 answer = 0
+
 for i in range(n):
-    id = i
+    idx = i
     while stack and stack[-1][1] > li[i]:
-        id, height = stack.pop()
-        temp_ans = (i - id) * height
-        answer = max(answer, temp_ans)
-    stack.append([id, li[i]])
+        idx, height = stack.pop()
+        temp_answer = (i - idx) * height
+        answer = max(answer, temp_answer)
+    stack.append([idx, li[i]])
 
 while stack:
-    id, height = stack.pop()
-    temp_ans = (n - id) * height
-    answer = max(answer, temp_ans)
+    idx, height = stack.pop()
+    temp_answer = (n - idx) * height
+    answer = max(answer, temp_answer)
 
 print(answer)
