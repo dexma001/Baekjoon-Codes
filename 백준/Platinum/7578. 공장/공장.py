@@ -29,8 +29,7 @@ def query(arr, idx):
 
 
 def CountInversion(arr, n):
-    mx = max(arr_du)
-    Fenwick_arr = [0] * (mx + 2)
+    Fenwick_arr = [0] * (n + 2)
     answer = 0
     for i in range(n):
         add(Fenwick_arr, arr[i], 1)
