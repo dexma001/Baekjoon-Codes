@@ -10,8 +10,8 @@ case_list = [[1, 1], [n, n]]
 for i in range(case):
     case_list.append(list(map(int, input().split())))
 
-dp = list([0 for _ in range(1002)] for _ in range(1002))
-dp_trace = list([0 for _ in range(1002)] for _ in range(1002))
+dp = list([0 for _ in range(case+2)] for _ in range(case+2))
+dp_trace = list([0 for _ in range(case+2)] for _ in range(case+2))
 
 
 def distance(a, b):
@@ -19,10 +19,9 @@ def distance(a, b):
 
 
 def solve(m, n):
-
     next = max(m, n) + 1
 
-    if next == case + 2:
+    if next == case +2:
         return 0
 
     if dp[m][n] != 0:
