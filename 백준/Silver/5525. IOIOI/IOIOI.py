@@ -1,4 +1,4 @@
-# 5525 IOIOI
+# 5525 
 
 import sys
 input = sys.stdin.readline
