@@ -4,12 +4,25 @@ import sys
 sys.setrecursionlimit(10**8)
 
 n = int(input())
-cnt = [0, 0, 1, 1] + [0] * (n-3)
-dp = [[] for _ in range(n+1)]
-dp[1] = [1]
-
 
 if n == 1:
+    print(0)
+    print(1)
+    quit()
+
+if n == 2:
+    print(1)
+    print('2 1')
+    quit()
+
+cnt = [0, 0, 1, 1] + [0] * (n-3)
+dp = [[] for _ in range(n+1)]
+
+dp[1] = [1]
+dp[2] = [2, 1]
+dp[3] = [3, 1]
+
+if n <= 3:
     print(cnt[n])
     print(*dp[n])
 
