@@ -7,12 +7,10 @@ if n % 2 != 0:
 
 else:
     temp = n//2
-    dp = [0] * (temp+1)
+    dp = [1] + [0] * (temp)
     for i in range(1, temp+1):
         if i == 1:
             dp[i] = 3
-        elif i == 2:
-            dp[i] = 11
         else:
             dp[i] = dp[i-1] * 4 - dp[i-2]
 
