@@ -18,16 +18,10 @@ arr_plus.sort(reverse=True)
 arr_minus.sort(reverse=True)
 
 answer = 0
-while len(arr_plus) >= m:
-    answer += abs(arr_plus[0]) * 2
-    arr_plus = arr_plus[m:]
-if len(arr_plus) != 0:
-    answer += arr_plus[0] * 2
+for i in range(0, len(arr_plus), m):
+    answer += arr_plus[i] * 2
 
-while len(arr_minus) >= m:
-    answer += abs(arr_minus[0]) * 2
-    arr_minus = arr_minus[m:]
-if len(arr_minus) != 0:
-    answer += arr_minus[0] * 2
+for i in range(0, len(arr_minus), m):
+    answer += arr_minus[i] * 2
 
 print(answer)
