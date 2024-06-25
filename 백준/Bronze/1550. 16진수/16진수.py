@@ -1,1 +1,1 @@
-print(int(str(input()),16))
+print(int(input(),16))
