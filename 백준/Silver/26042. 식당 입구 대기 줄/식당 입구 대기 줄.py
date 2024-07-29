@@ -1,9 +1,10 @@
 # 26042
 
+from collections import deque
 import sys
 input = sys.stdin.readline
 
-stack = list()
+stack = deque([])
 
 answer = [0, 0]
 for _ in range(int(input())):
@@ -18,6 +19,6 @@ for _ in range(int(input())):
             if stack[-1] < answer[1]:
                 answer = [len(stack), stack[-1]]
     else:
-        stack.pop(0)
+        stack.popleft()
 
 print(*answer)
