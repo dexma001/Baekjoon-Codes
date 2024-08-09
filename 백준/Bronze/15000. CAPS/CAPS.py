@@ -1,1 +1,1 @@
-print(str(input().rstrip()).upper())
+print(input().upper())
