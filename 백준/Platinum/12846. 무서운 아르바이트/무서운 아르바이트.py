@@ -1,4 +1,6 @@
 # 12846
+# Same as 6549 - 히스토그램에서 가장 큰 직사각형
+
 
 import sys
 input = sys.stdin.readline
@@ -20,5 +22,6 @@ for i in range(n):
 while stack:
     idx, height = stack.pop()
     answer = max(answer, (n-idx)*height)
+
 
 print(answer)
