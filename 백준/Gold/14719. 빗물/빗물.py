@@ -1,0 +1,18 @@
+# 14719
+
+import sys
+input = sys.stdin.readline
+
+n, m = map(int, input().split())
+arr = list(map(int, input().split()))
+
+ans = 0
+for i in range(1, m-1):
+    left = max(arr[:i])
+    right = max(arr[i+1:])
+
+    m = min(left, right)
+    if m > arr[i]:
+        ans += m - arr[i]
+
+print(ans)
