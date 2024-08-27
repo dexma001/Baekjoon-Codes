@@ -1,3 +1,6 @@
+# 28688
+# 완전폐기
+
 import sys
 input = sys.stdin.readline
 
