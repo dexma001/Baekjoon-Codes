@@ -74,7 +74,7 @@ for i, j in list(land_outline):
                 x = b + dx[k]
                 if 0 <= y < n and 0 <= x < n:
                     if arr[y][x] == 1:
-                        if land_outline[(y, x)] == which_land:
+                        if land_outline[(y, x)] == which_land or not land_outline[(y, x)]:
                             continue
                         else:
                             trig = 1
