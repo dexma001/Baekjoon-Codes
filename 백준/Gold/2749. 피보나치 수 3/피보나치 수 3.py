@@ -3,10 +3,9 @@
 import sys
 input = sys.stdin.readline
 
-mod = 1000000
-per = mod//10*15
+per = 1500000
 fib = [0, 1]
 for _ in range(2, per):
-    fib.append((fib[-1] + fib[-2]) % mod)
+    fib.append((fib[-1] + fib[-2]) % 1000000)
 
 print(fib[int(input()) % per])
