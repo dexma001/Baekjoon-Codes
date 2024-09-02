@@ -44,7 +44,7 @@ while True:
             continue
 
         if c == 0 or c == n-1 or d == 0 or d == m-1:
-            print(answer)
+            print(1)
             quit()
         for j in range(4):
             p = c + dy[j]
