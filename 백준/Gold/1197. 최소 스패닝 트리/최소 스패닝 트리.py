@@ -1,6 +1,7 @@
 # 1197
 
 import sys
+sys.setrecursionlimit(10**9)
 input = sys.stdin.readline
 
 vertex, weight = map(int, input().split())
@@ -11,6 +12,7 @@ for _ in range(weight):
     li_connect.append(list(map(int, input().split())))
 
 li_connect.sort(key=lambda x: x[2])
+
 
 def find(x):
     if li_parent[x] != x:
