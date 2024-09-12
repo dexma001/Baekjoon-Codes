@@ -1,10 +1,16 @@
-import sys
-input = sys.stdin.readline
 
-arr = list(i+1 for i in range(30))
 
-for _ in range(28):
-    arr.remove(int(input()))
+submit = []
+for i in range(28):
+    submit.append(int(input()))
+submit.sort()
 
-for i in arr:
-    print(i)
+total = [i+1 for i in range(30)]
+
+for i in range(30):
+    try:
+        if submit[i] != total[i]:
+            print(i+1)
+            submit.insert(i, i+1)
+    except:
+        print(i+1)
