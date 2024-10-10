@@ -31,16 +31,21 @@ while arr:
         heapq.heappush(truck, [j, k])
     elif truck_total != c:
         temp = c - truck_total
-        truck_total += temp
+        truck_total = c
         heapq.heappush(truck, [j, temp])
     else:
+        temp_loc = 0
+        temp_loc_index = -1
         for t in range(len(truck)):
             p, q = truck[t]
-            temp_loc = 0
-            if q > j:
-                temp_loc = max(temp_loc, t)
-        truck[temp_loc][0] = j
-        heapq.heapify(truck)
+            if p > j:
+                if p > temp_loc:
+                    temp_loc = p
+                    temp_loc_index = t
+        if temp_loc_index != -1:
+            truck[temp_loc_index][1] -= k
+            truck.append([j, k])
+            heapq.heapify(truck)
 
 while truck:
     ii, jj = heapq.heappop(truck)
