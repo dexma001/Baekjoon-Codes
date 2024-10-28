@@ -8,7 +8,7 @@ s = list(map(str, input().strip()))
 
 answer = list()
 
-mom = ['a', 'e', 'i', 'o', 'u']
+mom = ['A', 'E', 'I', 'O', 'U']
 
 while s:
     i = s.pop()
