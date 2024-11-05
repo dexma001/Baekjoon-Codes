@@ -1,5 +1,6 @@
 # 1306
 
+from collections import deque
 import math
 import sys
 input = sys.stdin.readline
@@ -42,6 +43,12 @@ def find_seg(idx, left, right, start, end):
 
 answer = list()
 for i in range(m, n-m+2):
-    answer.append(find_seg(1, 1, n, i-(m-1), i+(m-1)))
+    l1 = i-(m-1)
+    r1 = i+(m-1)
+    l11 = l1-1
+    if not answer or arr[l11] == answer[-1] or arr[r1] > answer[-1]:
+        answer.append(find_seg(1, 1, n, l1, r1))
+    else:
+        answer.append(answer[-1])
 
 print(*answer)
