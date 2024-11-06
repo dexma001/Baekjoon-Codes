@@ -10,7 +10,7 @@ arr = [0] + list(map(int, input().split()))
 size = math.ceil(math.log2(n)) + 1
 size_ = 1 << size
 
-seg_tree = list(0 for _ in range(size_+1))
+seg_tree = list(0 for _ in range(size_ + 1))
 lazy_seg = list(0 for _ in range(size_ + 1))
 
 
@@ -30,7 +30,7 @@ make_seg(1, 1, n)
 
 def lazy_update(idx, left, right):
     if lazy_seg[idx] != 0:
-        seg_tree[idx] += (right-left+1) * lazy_seg[idx]
+        seg_tree[idx] += (right-left+1)*lazy_seg[idx]
 
         if left != right:
             lazy_seg[idx*2] += lazy_seg[idx]
@@ -51,14 +51,14 @@ def seg_find(idx, left, right, start, end):
     mid = (left+right)//2
     l1 = seg_find(idx*2, left, mid, start, end)
     r1 = seg_find(idx*2+1, mid+1, right, start, end)
-    return (l1+r1)
+    return l1+r1
 
 
 def seg_update(idx, left, right, start, end, value):
     lazy_update(idx, left, right)
 
-    if end < right or start > left:
-        return 0
+    if end < left or start > right:
+        return
 
     if start <= left and right <= end:
         seg_tree[idx] += (right-left+1)*value
@@ -68,9 +68,9 @@ def seg_update(idx, left, right, start, end, value):
         return
 
     mid = (left+right)//2
-    l1 = seg_update(idx*2, left, mid, start, end, value)
-    r1 = seg_update(idx*2+1, mid+1, right, start, end, value)
-    seg_tree[idx] = l1 + r1
+    seg_update(idx*2, left, mid, start, end, value)
+    seg_update(idx*2+1, mid+1, right, start, end, value)
+    seg_tree[idx] = seg_tree[idx*2] + seg_tree[idx*2+1]
 
 
 for _ in range(q1+q2):
