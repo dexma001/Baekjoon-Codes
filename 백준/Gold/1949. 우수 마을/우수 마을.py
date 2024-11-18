@@ -1,6 +1,5 @@
 # 1949
 
-from collections import deque
 import sys
 input = sys.stdin.readline
 sys.setrecursionlimit(10**9)
@@ -29,7 +28,7 @@ def dfs(i):
             continue
         else:
             dfs(j)
-            dp[0][i] = dp[0][i]+dp[1][j]
+            dp[0][i] += dp[1][j]
             dp[1][i] += max(dp[0][j], dp[1][j])
 
     dp[0][i] += people[i]
