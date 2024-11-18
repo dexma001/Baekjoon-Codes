@@ -35,4 +35,4 @@ def dfs(i):
 
 
 dfs(1)
-print(max(max(dp[0]), max(dp[1])))
+print(max(dp[0][1], dp[1][1]))
