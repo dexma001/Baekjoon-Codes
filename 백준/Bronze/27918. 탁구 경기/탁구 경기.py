@@ -1,9 +1,12 @@
+import sys
+input = sys.stdin.readline
+
 n = int(input())
 a1 = 0
 a2 = 0
 
 for _ in range(n):
-    temp = str(input())
+    temp = str(input().strip())
     if temp == 'D':
         a1 += 1
     else:
