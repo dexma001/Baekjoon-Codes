@@ -4,42 +4,43 @@ import sys
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
+seg = list(0 for _ in range(4*n + 1))
+lazy_seg = list(0 for _ in range(4*n + 1))
 
-seg = list(0 for _ in range(4*n+1))
-lazy = list(0 for _ in range(4*n+1))
 
+def lazy_update(idx, start, end):
+    if lazy_seg[idx]:
+        seg[idx] = (end-start+1) - seg[idx]
 
-def lazy_update(idx, left, right):
-    if lazy[idx] % 2:
-        seg[idx] = (right-left+1) - seg[idx]
-        if left != right:
-            lazy[idx*2] += 1
-            lazy[idx*2+1] += 1
-    lazy[idx] = 0
+        if start != end:
+            lazy_seg[idx*2] ^= 1
+            lazy_seg[idx*2+1] ^= 1
+
+        lazy_seg[idx] = 0
 
 
 def update_seg(idx, left, right, start, end):
     lazy_update(idx, left, right)
-    if end < left or right < start:
+
+    if end < left or start > right:
         return
 
     if start <= left and right <= end:
         seg[idx] = (right-left+1) - seg[idx]
         if left != right:
-            lazy[idx*2] += 1
-            lazy[idx*2+1] += 1
+            lazy_seg[idx*2] ^= 1
+            lazy_seg[idx*2+1] ^= 1
         return
 
-    mid = (left + right)//2
+    mid = (left+right)//2
     update_seg(idx*2, left, mid, start, end)
     update_seg(idx*2+1, mid+1, right, start, end)
     seg[idx] = seg[idx*2] + seg[idx*2+1]
-    return
 
 
 def find_seg(idx, left, right, start, end):
     lazy_update(idx, left, right)
-    if end < left or right < start:
+    if start > right or end < left:
         return 0
 
     if start <= left and right <= end:
