@@ -17,6 +17,6 @@ while True:
         answer.append(cnt)
         break
     cnt += 1
-    temp //= 2
+    temp >>= 1
 
 print(*answer)
