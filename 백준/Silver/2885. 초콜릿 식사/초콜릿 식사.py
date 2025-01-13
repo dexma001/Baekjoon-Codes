@@ -9,12 +9,13 @@ temp = 1 << n
 answer.append(temp)
 
 cnt = 0
-while k != 0:
+while True:
     if temp <= k:
         k -= temp
 
     if k == 0:
         answer.append(cnt)
+        break
     cnt += 1
     temp //= 2
 
