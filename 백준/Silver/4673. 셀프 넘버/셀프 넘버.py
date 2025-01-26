@@ -1,21 +1,27 @@
-# 4673
+import sys
+input = sys.stdin.readline
 
-import time
+nums = [i + 1 for i in range(10000)] # 1 to 10000
+dns = []
 
-det_arr = list(0 for _ in range(10001))
-for i in range(1, 10001):
-    if det_arr[i] == 0:
-        print(i)
+for num in nums:
+    ans = num
+    temp = len(str(num)) #정수의 길이
+    for i in range(temp):
+        ans += num//(10**(temp-(i+1)))
+        num %= 10**(temp-(i+1))
+    
+    dns.append(ans)
 
-        while True:
-            temp = 0
-            for j in str(i):
-                temp += int(j)
-            temp += i
-            if temp < 10001:
-                det_arr[temp] = 1
-                i = temp
-            else:
-                break
-    else:
+dns = (set(dns)) # save unique values
+
+for dn in dns:
+    if dn > 10000:
         continue
+
+    nums.remove(dn)
+
+# print every line
+for num in nums:
+    print(num)
+    
