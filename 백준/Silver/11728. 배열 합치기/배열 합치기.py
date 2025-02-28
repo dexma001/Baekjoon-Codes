@@ -1,0 +1,6 @@
+n,m = map(int, input().split())
+answer = list()
+answer.extend(list(map(int, input().split())))
+answer.extend(list(map(int, input().split())))
+answer.sort()
+print(*answer)
