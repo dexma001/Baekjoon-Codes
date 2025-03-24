@@ -1,7 +1,6 @@
 # 1463
 
 import sys
-sys.setrecursionlimit(10**8)
 
 n = int(input())
 if n == 1:
