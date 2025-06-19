@@ -1,16 +1,24 @@
-def solve():
-    n, k = [int(x) for x in input().split()]
-    table = [0]*(k+1)
-    for _ in range(n):
-        w, v = [int(x) for x in input().split()]
-        if w > k:
-            continue
-        for j in range(k, 0, -1):
-            if j + w <= k and table[j] != 0:
-                table[j+w] = max(table[j+w], table[j] + v)
+#12865
 
-        table[w] = max(table[w], v)
-    print(max(table))
+import sys
+input = sys.stdin.readline
 
+n, k = map(int, input().split())
+weight_list = list(0 for _ in range(k+1))
 
-solve()
+item_list = list() #weight, value
+for _ in range(n):
+    item_list.append(list(map(int, input().split())))
+    
+item_list.sort()  
+    
+for weight, value in item_list:
+    if weight > k:
+        continue
+    for i in range(k, 0, -1):
+        if weight_list[i] and i+weight <= k:
+            weight_list[i+weight] = max(weight_list[i+weight], weight_list[i] + value)
+    
+    weight_list[weight] = max(weight_list[weight], value)
+        
+print(max(weight_list))
