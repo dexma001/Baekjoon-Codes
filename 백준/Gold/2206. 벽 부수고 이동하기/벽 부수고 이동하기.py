@@ -1,41 +1,42 @@
-# 2206
+#2206
 
-from collections import deque
 import sys
 input = sys.stdin.readline
+from collections import deque
+import time
 
 n, m = map(int, input().split())
-arr = list(list(map(int, input().strip()))for _ in range(n))
-visited = [[[0, 0] for _ in range(m)] for _ in range(n)]
+arr = list()
+for _ in range(n):
+    arr.append(list(map(int, input().strip())))
+    
+visited = list(list(list(0 for _ in range(m)) for _ in range(n)) for _ in range(2))
+value = list(list(list(10e9 for _ in range(m)) for _ in range(n)) for _ in range(2))
+stack = deque([])
+stack.append([0, 0, 0])
+visited[0][0][0] = 1
+value[0][0][0] = 1
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
+dy = [1, 0, -1, 0]
+dx = [0, 1, 0, -1]
 
+while stack:
+    for _ in range(len(stack)):
+        i, j, k = stack.popleft()
+        for l in range(4):
+            y = i + dy[l]
+            x = j + dx[l]
+            if 0<=y<n and 0<=x<m and not visited[k][y][x]:
+                if arr[y][x] == 1: 
+                    if k == 0:
+                        value[1][y][x] = min(value[1][y][x], value[0][i][j] + 1)
+                        visited[1][y][x] = 1
+                        stack.append([y, x, 1])
+                    else:
+                        continue
+                else:
+                    value[k][y][x] = min(value[k][y][x], value[k][i][j] + 1)
+                    visited[k][y][x] = 1
+                    stack.append([y, x, k])
 
-def bfs():
-    q = deque([])
-    q.append([0, 0, 0])
-    visited[0][0][0] = 1
-
-    while q:
-        x, y, z = q.popleft()
-
-        if x == n-1 and y == m-1:
-            return visited[x][y][z]
-
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-
-            if 0 <= nx < n and 0 <= ny < m:
-                if arr[nx][ny] == 0 and visited[nx][ny][z] == 0:
-                    visited[nx][ny][z] = visited[x][y][z] + 1
-                    q.append([nx, ny, z])
-
-                elif arr[nx][ny] == 1 and z == 0:
-                    visited[nx][ny][z+1] = visited[x][y][z] + 1
-                    q.append([nx, ny, z+1])
-    return -1
-
-
-print(bfs())
+print(-1) if min(value[0][-1][-1], value[1][-1][-1]) == 10e9 else print(min(value[0][-1][-1], value[1][-1][-1]))
