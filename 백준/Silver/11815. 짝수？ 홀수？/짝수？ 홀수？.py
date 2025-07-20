@@ -8,11 +8,9 @@ arr = list(map(int, input().split()))
 answer = list()
 
 for i in arr:
-    if i == 1:
-        answer.append(1)
-    elif int(i**(1/2))**2 != i:
-        answer.append(0)
+    if i == 1 or int(i**(1/2))**2 == i:
+        answer.append(1) 
     else:
-        answer.append(1)
+        answer.append(0)
 
 print(*answer)
