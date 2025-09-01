@@ -11,6 +11,10 @@ for _ in range(n):
 
 answer = 0
 cnt = 0
+for i in range(n):
+    for j in range(m):
+        if arr[i][j] == 1:
+            cnt += 1
 
 dy = [1, 0, -1, 0]
 dx = [0, 1, 0, -1]
@@ -20,12 +24,6 @@ while True:
     temp.append([0, 0])
     cheese_to_melt = list()
     visited = list(list(0 for _ in range(m)) for _ in range(n))
-
-    if not cnt:
-        for i in range(n):
-            for j in range(m):
-                if arr[i][j] == 1:
-                    cnt += 1
 
     while temp:
         y, x = temp.popleft()
