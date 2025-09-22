@@ -6,8 +6,6 @@
 
 int N, M;
 int arr[7] = { 0, };
-int visited[1000000][7] = { 0, };
-int visited_index = 0;
 
 int compare(const void* a, const void* b) {
     return (*(int *)a - *(int *)b);
@@ -16,33 +14,10 @@ int compare(const void* a, const void* b) {
 void N_AND_M(int start, int depth, int* arr, int* answer, int answer_index) {
     
     if (depth == M) {
-        bool breaker = false;
-        /*
-        for (int i = 0; i < visited_index; i++){
-            if (breaker) {
-                break;
-            }
-            bool temp_breaker = true;
-            for (int j = 0; j < M; j++) {
-                if (visited[i][j] != answer[j]) {
-                    temp_breaker = false;
-                }
-            }
-            if (temp_breaker){
-                breaker = true;
-            }
-        }
-        */
-
-        if (!breaker){
             for (int i = 0; i < M; i++){
                 printf("%d ", answer[i]);
-                visited[visited_index][i] = answer[i];
             }
-            visited_index += 1;
             printf("\n");
-        }
-
         return;
     }
 
