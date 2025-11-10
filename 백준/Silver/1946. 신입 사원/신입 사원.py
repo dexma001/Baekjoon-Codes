@@ -3,19 +3,17 @@ input = sys.stdin.readline
 
 for _ in range(int(input())):
     n = int(input())
-    arr = list()
+    arr = list(0 for _ in range(n+1))
+    
     for _ in range(n):
-        arr.append(list(map(int, input().split())))
-        
-    arr.sort(key=lambda x: [x[0], x[1]])
+        a, b = map(int, input().split())
+        arr[a] = b
 
     answer = 1
-    mini = arr[0][1]
-    for i in range(1, n):
-        
-        if arr[i][1] < mini:
-            mini = arr[i][1]
+    temp = arr[1]
+    for i in range(2, n+1):
+        if arr[i] < temp:
             answer += 1
-        else:
-            continue
+            temp = arr[i]
+    
     print(answer)
