@@ -1,10 +1,10 @@
 import sys
 input = sys.stdin.readline
-from collections import defaultdict
+from collections import defaultdict, deque
 
 for _ in range(int(input())):
-    arr = list(map(int, input().split()))
-    cnt = arr.pop(0)
+    arr = deque(list(map(int, input().split())))
+    cnt = arr.popleft()
     temp = defaultdict(int)
     for i in arr:
         temp[i] += 1
