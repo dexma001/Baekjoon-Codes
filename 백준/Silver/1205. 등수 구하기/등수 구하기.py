@@ -13,8 +13,8 @@ else:
         if arr[i] > t:
             continue
         else:
-                print(i+1)
-                break            
+            print(i+1)
+            break            
 
     else:
         print(n+1)
