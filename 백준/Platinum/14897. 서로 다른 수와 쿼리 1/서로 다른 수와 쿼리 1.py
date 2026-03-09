@@ -19,7 +19,7 @@ for i in range(q):
     l, r = map(int, input().split())
     answer_list.append([i, l, r, 0, l//abc])
 
-answer_list.sort(key=lambda x:(x[4], x[2]))
+answer_list.sort(key=lambda x:(x[4], x[2] if x[4] % 2 == 0 else -x[2]))
 
 number = [0] * (len(dic)+1)
 ans = 0
