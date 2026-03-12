@@ -22,9 +22,15 @@ for i in range(n-1, -1, -1):
     if visited[i]:
         continue
 
-    answer += max(abs(curr_loc - x[i]), abs(t[i] - answer))
-    curr_loc = x[i]
-    visited[i] = 1
+    if t[i] > answer:
+        answer += max(abs(curr_loc - x[i]), abs(t[i] - answer))
+        curr_loc = x[i]
+        visited[i] = 1
+
+    else:
+        answer += abs(curr_loc - x[i])
+        curr_loc = x[i]
+        visited[i] = 1
 
 answer += curr_loc
 print(answer)
